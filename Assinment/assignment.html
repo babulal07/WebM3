@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indian Cricket Legends</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes glow {
+            0%, 100% {
+                box-shadow: 0 0 5px rgba(255, 107, 53, 0.5);
+            }
+            50% {
+                box-shadow: 0 0 20px rgba(255, 107, 53, 0.8);
+            }
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.02);
+            }
+        }
+        
+        @keyframes rotateIn {
+            from {
+                opacity: 0;
+                transform: rotateY(-90deg);
+            }
+            to {
+                opacity: 1;
+                transform: rotateY(0);
+            }
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #0a0e27;
+            color: #fff;
+            overflow-x: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            padding: 80px 20px;
+            text-align: center;
+            border-bottom: 3px solid #ff6b35;
+            margin-bottom: 60px;
+            animation: fadeInUp 0.8s ease;
+        }
+        
+        .header h1 {
+            font-size: 4em;
+            font-weight: 900;
+            margin-bottom: 15px;
+            letter-spacing: -2px;
+            background: linear-gradient(135deg, #ff6b35, #f7b801);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: pulse 3s infinite;
+        }
+        
+        .header p {
+            font-size: 1.3em;
+            color: #bbb;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            padding: 40px 0;
+        }
+        
+        span {
+            display: flex;
+            flex-direction: column;
+            background: linear-gradient(135deg, #1a1a2e 0%, #0f3460 100%);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            border: 2px solid rgba(255, 107, 53, 0.3);
+            cursor: pointer;
+            position: relative;
+            animation: fadeInUp 0.6s ease;
+            perspective: 1000px;
+        }
+        
+        span::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 107, 53, 0.3), transparent);
+            transition: left 0.6s;
+            z-index: 1;
+        }
+        
+        span::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 107, 53, 0.2), transparent 60%);
+            opacity: 0;
+            transition: opacity 0.4s;
+            z-index: 1;
+        }
+        
+        span:hover::before {
+            left: 100%;
+        }
+        
+        span:hover::after {
+            opacity: 1;
+        }
+        
+        span:hover {
+            transform: translateY(-25px) rotateX(5deg) rotateZ(2deg);
+            border-color: #ff6b35;
+            box-shadow: 0 30px 80px rgba(255, 107, 53, 0.4), inset 0 0 20px rgba(255, 107, 53, 0.1);
+            animation: glow 0.8s infinite;
+        }
+        
+        span img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            transition: all 0.5s ease;
+            filter: brightness(1);
+        }
+        
+        span:hover img {
+            transform: scale(1.1) rotate(1deg);
+            filter: brightness(1.1) contrast(1.1);
+        }
+        
+        .info {
+            padding: 25px 25px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            z-index: 2;
+            background: linear-gradient(135deg, rgba(10, 14, 39, 0.8) 0%, rgba(15, 52, 96, 0.8) 100%);
+        }
+        
+        span b {
+            color: #ff6b35;
+            font-size: 1.4em;
+            margin-bottom: 4px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            animation: fadeInUp 0.8s ease 0.1s both;
+        }
+        
+        .nickname {
+            color: #f7b801;
+            font-size: 0.85em;
+            font-weight: 600;
+            margin-bottom: 12px;
+            letter-spacing: 0.5px;
+            font-style: italic;
+            opacity: 0.95;
+            animation: fadeInUp 0.8s ease 0.15s both;
+        }
+        
+        .dob {
+            color: #f7b801;
+            font-size: 0.9em;
+            margin: 6px 0;
+            font-weight: 600;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+        
+        .stats {
+            display: flex;
+            gap: 10px;
+            margin: 10px 0;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease 0.3s both;
+        }
+        
+        .stat-badge {
+            background: rgba(255, 107, 53, 0.2);
+            border: 1px solid #ff6b35;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.75em;
+            font-weight: 700;
+            color: #ff6b35;
+            transition: all 0.3s;
+        }
+        
+        span:hover .stat-badge {
+            background: #ff6b35;
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        span mark {
+            background: linear-gradient(135deg, #ff6b35, #f7b801);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 0.85em;
+            font-weight: 700;
+            display: inline-block;
+            margin: 10px 0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.3s;
+            animation: fadeInUp 0.8s ease 0.4s both;
+        }
+        
+        span:hover mark {
+            transform: scale(1.05) rotate(-2deg);
+            box-shadow: 0 5px 15px rgba(255, 107, 53, 0.5);
+        }
+        
+        span u {
+            color: #bbb;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+            font-size: 0.95em;
+            border-left: 3px solid #ff6b35;
+            padding-left: 10px;
+            transition: all 0.3s;
+            animation: fadeInUp 0.8s ease 0.5s both;
+        }
+        
+        span:hover u {
+            color: #ff6b35;
+            border-left-color: #f7b801;
+            padding-left: 15px;
+        }
+        
+        .career-timeline {
+            background: rgba(255, 107, 53, 0.1);
+            padding: 10px 12px;
+            border-radius: 6px;
+            font-size: 0.8em;
+            color: #f7b801;
+            margin: 10px 0;
+            font-weight: 600;
+            border-left: 3px solid #f7b801;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+        
+        .achievements {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 12px 0;
+            animation: fadeInUp 0.8s ease 0.25s both;
+        }
+        
+        .achievement-badge {
+            background: linear-gradient(135deg, rgba(247, 184, 1, 0.3), rgba(255, 107, 53, 0.3));
+            border: 1px solid #f7b801;
+            padding: 5px 10px;
+            border-radius: 12px;
+            font-size: 0.7em;
+            font-weight: 700;
+            color: #f7b801;
+            text-align: center;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+        
+        span:hover .achievement-badge {
+            background: linear-gradient(135deg, #f7b801, #ff6b35);
+            color: white;
+            transform: scale(1.1);
+            box-shadow: 0 4px 12px rgba(247, 184, 1, 0.5);
+        }
+        
+        .star-rating {
+            display: flex;
+            gap: 4px;
+            margin: 10px 0;
+            animation: fadeInUp 0.8s ease 0.3s both;
+        }
+        
+        .star {
+            color: #f7b801;
+            font-size: 1.1em;
+            text-shadow: 0 0 5px rgba(247, 184, 1, 0.5);
+            transition: all 0.3s;
+        }
+        
+        span:hover .star {
+            transform: scale(1.2) rotate(15deg);
+            text-shadow: 0 0 15px rgba(247, 184, 1, 0.8);
+        }
+        
+        .quote {
+            background: rgba(247, 184, 1, 0.08);
+            border-left: 3px solid #f7b801;
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 0.75em;
+            color: #ccc;
+            font-style: italic;
+            margin: 12px 0;
+            line-height: 1.4;
+            animation: fadeInUp 0.8s ease 0.35s both;
+        }
+        
+        .quote::before {
+            content: '"';
+            color: #f7b801;
+            font-size: 1.5em;
+            margin-right: 5px;
+        }
+        
+        .career-highlight {
+            background: rgba(255, 107, 53, 0.08);
+            padding: 10px 12px;
+            border-radius: 6px;
+            font-size: 0.75em;
+            color: #bbb;
+            margin: 8px 0;
+            border-left: 3px solid #ff6b35;
+            animation: fadeInUp 0.8s ease 0.4s both;
+        }
+        
+        .state-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff6b35, #f7b801);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.7em;
+            font-weight: 700;
+            margin-top: 8px;
+            animation: fadeInUp 0.8s ease 0.45s both;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 60px 20px;
+            border-top: 1px solid rgba(255, 107, 53, 0.3);
+            margin-top: 80px;
+            animation: fadeInUp 0.8s ease;
+        }
+        
+        .footer h3 {
+            font-size: 1.5em;
+            color: #ff6b35;
+            margin-bottom: 15px;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5em;
+            }
+            
+            .cards-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>CRICKET LEGENDS</h1>
+    <p>The Greatest Players of Indian Cricket History</p>
+</div>
+
+<div class="container">
+    <div class="cards-container">
+
+    <span>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqN_er4_ICQ38xGzEHToGYnGbeS_89Z5xFpb145m4BQA&s=10"
+             alt="M S Dhoni">
+        <div class="info">
+            <b>M S DHONI</b>
+            <div class="nickname">~ Captain Cool ~</div>
+            <div class="dob">DOB: 07-JUL-1981</div>
+            <div class="career-timeline">Career: 2004 - 2020</div>
+            <div class="stats">
+                <span class="stat-badge">296 Tests</span>
+                <span class="stat-badge">350 ODIs</span>
+                <span class="stat-badge">90 T20Is</span>
+            </div>
+            <div class="achievements">
+                <span class="achievement-badge">🏆 World Cup</span>
+                <span class="achievement-badge">👑 Captain</span>
+                <span class="achievement-badge">🎖️ Legend</span>
+                <span class="achievement-badge">⭐ ICC Hall</span>
+            </div>
+            <div class="star-rating">
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+            </div>
+            <div class="quote">Finishing is like wit. You have it or you don't.</div>
+            <div class="career-highlight">🎯 Led India to 2011 Cricket World Cup Victory</div>
+            <div class="career-highlight">🎯 World T20 Champion 2007</div>
+            <mark>WK-BATSMAN</mark>
+            <u>Ranchi, Jharkhand</u>
+            <div class="state-badge">Jharkhand</div>
+        </div>
+    </span>
+
+    
+
+    <span>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbiixJvxGpk8RhU8LLtpBG_pktP7NMAISVsGyg6ucEXw&s=10"
+             alt="Sachin Tendulkar">
+        <div class="info">
+            <b>SACHIN TENDULKAR</b>
+            <div class="nickname">~ The Master Blaster ~</div>
+            <div class="dob">DOB: 24-APR-1973</div>
+            <div class="career-timeline">Career: 1989 - 2013</div>
+            <div class="stats">
+                <span class="stat-badge">200 Tests</span>
+                <span class="stat-badge">463 ODIs</span>
+                <span class="stat-badge">100 Century</span>
+            </div>
+            <div class="achievements">
+                <span class="achievement-badge">🏆 World Cup</span>
+                <span class="achievement-badge">👑 Batting Icon</span>
+                <span class="achievement-badge">🎖️100 Centuries</span>
+                <span class="achievement-badge">⭐ God of Cricket</span>
+            </div>
+            <div class="star-rating">
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+            </div>
+            <div class="quote">Sachin is in a different league altogether. Nothing matters unless India wins.</div>
+            <div class="career-highlight">🎯 15 Years as World's Top Batsman</div>
+            <div class="career-highlight">🎯 Only Player with 100 International Centuries</div>
+            <mark>BATSMAN</mark>
+            <u>Mumbai, Maharashtra</u>
+            <div class="state-badge">Maharashtra</div>
+        </div>
+    </span>
+
+
+    <span>
+        <img src="https://cdn.britannica.com/48/252748-050-C514EFDB/Virat-Kohli-India-celebrates-50th-century-Cricket-November-15-2023.jpg"
+             alt="Virat Kohli">
+        <div class="info">
+            <b>VIRAT KOHLI</b>
+            <div class="nickname">~ The King ~</div>
+            <div class="dob">DOB: 05-NOV-1988</div>
+            <div class="career-timeline">Career: 2008 - Present</div>
+            <div class="stats">
+                <span class="stat-badge">99 Tests</span>
+                <span class="stat-badge">295 ODIs</span>
+                <span class="stat-badge">105 T20Is</span>
+            </div>
+            <div class="achievements">
+                <span class="achievement-badge">👑 Modern Great</span>
+                <span class="achievement-badge">🎖️ Captain</span>
+                <span class="achievement-badge">⭐ ODI Legend</span>
+                <span class="achievement-badge">🏆 Record Setter</span>
+            </div>
+            <div class="star-rating">
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+            </div>
+            <div class="quote">Chase is like a thriller; you don't know till the last moment.</div>
+            <div class="career-highlight">🎯 Most ODI Centuries (49+)</div>
+            <div class="career-highlight">🎯 Fastest to 10,000 ODI Runs</div>
+            <mark>BATSMAN</mark>
+            <u>Delhi</u>
+            <div class="state-badge">Delhi</div>
+        </div>
+    </span>
+
+    <span>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1AaU57aoP95qRhlEFY6jHOmgZkej4ZCXoTlzYRCodoA&s=10"
+             alt="Rohit Sharma">
+        <div class="info">
+            <b>ROHIT SHARMA</b>
+            <div class="nickname">~ The Hitman ~</div>
+            <div class="dob">DOB: 30-APR-1987</div>
+            <div class="career-timeline">Career: 2007 - Present</div>
+            <div class="stats">
+                <span class="stat-badge">60 Tests</span>
+                <span class="stat-badge">263 ODIs</span>
+                <span class="stat-badge">150 T20Is</span>
+            </div>
+            <div class="achievements">
+                <span class="achievement-badge">👑 T20 Captain</span>
+                <span class="achievement-badge">🏆 World Cup</span>
+                <span class="achievement-badge">⭐ Aggressive</span>
+                <span class="achievement-badge">🎖️ IPL Legend</span>
+            </div>
+            <div class="star-rating">
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+            </div>
+            <div class="quote">I just want to bat well and help my team win.</div>
+            <div class="career-highlight">🎯 Most ODI Double Centuries (3)</div>
+            <div class="career-highlight">🎯 Led India to T20 World Cup 2024</div>
+            <mark>BATSMAN</mark>
+            <u>Mumbai, Maharashtra</u>
+            <div class="state-badge">Maharashtra</div>
+        </div>
+    </span>
+
+
+
+    <span>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFTiWVVP6L6oe66-Feh4S7XNIh5Y2I6WuUJQ6heGyCuQ&s=10"
+             alt="Jasprit Bumrah">
+        <div class="info">
+            <b>JASPRIT BUMRAH</b>
+            <div class="nickname">~ Boom Boom ~</div>
+            <div class="dob">DOB: 06-MAR-1993</div>
+            <div class="career-timeline">Career: 2016 - Present</div>
+            <div class="stats">
+                <span class="stat-badge">42 Tests</span>
+                <span class="stat-badge">98 ODIs</span>
+                <span class="stat-badge">89 T20Is</span>
+            </div>
+            <div class="achievements">
+                <span class="achievement-badge">🎯 Express Pace</span>
+                <span class="achievement-badge">🏆 World Cup</span>
+                <span class="achievement-badge">⭐ Yorker King</span>
+                <span class="achievement-badge">🎖️ Death Bowler</span>
+            </div>
+            <div class="star-rating">
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+            </div>
+            <div class="quote">The ball speaks for itself.</div>
+            <div class="career-highlight">🎯 Perfect Yorker Master</div>
+            <div class="career-highlight">🎯 Best Death Bowler in Modern Era</div>
+            <mark>BOWLER</mark>
+            <u>Ahmedabad, Gujarat</u>
+            <div class="state-badge">Gujarat</div>
+        </div>
+    </span>
+
+  
+
+    <span>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtcctv92aVvyiIhr50MeTUhplVlQzo9pRimb8UaFwEdA&s=10"
+             alt="Mohammed Siraj">
+        <div class="info">
+            <b>MOHAMMED SIRAJ</b>
+            <div class="nickname">~ The Lion ~</div>
+            <div class="dob">DOB: 20-MAR-1994</div>
+            <div class="career-timeline">Career: 2017 - Present</div>
+            <div class="stats">
+                <span class="stat-badge">28 Tests</span>
+                <span class="stat-badge">37 ODIs</span>
+                <span class="stat-badge">43 T20Is</span>
+            </div>
+            <div class="achievements">
+                <span class="achievement-badge">🎯 Fast Bowler</span>
+                <span class="achievement-badge">🏆 World Cup</span>
+                <span class="achievement-badge">⭐ Rising Star</span>
+                <span class="achievement-badge">🎖️ Skilled</span>
+            </div>
+            <div class="star-rating">
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+            </div>
+            <div class="quote">I want to make my mark in international cricket.</div>
+            <div class="career-highlight">🎯 Strong Performer in Test Cricket</div>
+            <div class="career-highlight">🎯 Key Bowler for India</div>
+            <mark>BOWLER</mark>
+            <u>Hyderabad, Telangana</u>
+            <div class="state-badge">Telangana</div>
+        </div>
+    </span>
+
+    <span>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7UPbsiApiUMULjBQfXyhtsIPg2gage-MOjbWwXiABQA&s=10"
+             alt="Mohammed Shami">
+        <div class="info">
+            <b>MOHAMMED SHAMI</b>
+            <div class="nickname">~ The Swing King ~</div>
+            <div class="dob">DOB: 13-SEP-1990</div>
+            <div class="career-timeline">Career: 2013 - Present</div>
+            <div class="stats">
+                <span class="stat-badge">78 Tests</span>
+                <span class="stat-badge">128 ODIs</span>
+                <span class="stat-badge">31 T20Is</span>
+            </div>
+            <div class="achievements">
+                <span class="achievement-badge">🎯 Swing Master</span>
+                <span class="achievement-badge">🏆 World Cup</span>
+                <span class="achievement-badge">⭐ Consistent</span>
+                <span class="achievement-badge">🎖️ Champion</span>
+            </div>
+            <div class="star-rating">
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+            </div>
+            <div class="quote">I want to take wickets for India in all formats.</div>
+            <div class="career-highlight">🎯 Master of Swing Bowling</div>
+            <div class="career-highlight">🎯 World Cup 2023 Star Performer</div>
+            <mark>BOWLER</mark>
+            <u>Amroha, Uttar Pradesh</u>
+            <div class="state-badge">Uttar Pradesh</div>
+        </div>
+    </span>
+
+    <span>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2pg5Y3PZgqsc5R-I1fKyJfnlC3HG5bMaEgJs19CnVbg&s=10"
+             alt="Ravindra Jadeja">
+        <div class="info">
+            <b>RAVINDRA JADEJA</b>
+            <div class="nickname">~ Sir Jadeja ~</div>
+            <div class="dob">DOB: 06-DEC-1988</div>
+            <div class="career-timeline">Career: 2010 - Present</div>
+            <div class="stats">
+                <span class="stat-badge">68 Tests</span>
+                <span class="stat-badge">175 ODIs</span>
+                <span class="stat-badge">73 T20Is</span>
+            </div>
+            <div class="achievements">
+                <span class="achievement-badge">🎯 All-Rounder</span>
+                <span class="achievement-badge">🏆 World Cup</span>
+                <span class="achievement-badge">⭐ Fielder</span>
+                <span class="achievement-badge">🎖️ Legend</span>
+            </div>
+            <div class="star-rating">
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+            </div>
+            <div class="quote">I want to win matches for India.</div>
+            <div class="career-highlight">🎯 Elite Fielder & Spinner Combo</div>
+            <div class="career-highlight">🎯 Test Match Specialist</div>
+            <mark>ALL-ROUNDER</mark>
+            <u>Jamnagar, Gujarat</u>
+            <div class="state-badge">Gujarat</div>
+        </div>
+    </span>
+
+    <span>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMuPabZkNbIKgYzr8vxQisqhdMlMVcHRlKY_Ks230Bgw&s=10"
+             alt="Zaheer Khan">
+        <div class="info">
+            <b>ZAHEER KHAN</b>
+            <div class="nickname">~ The Professor ~</div>
+            <div class="dob">DOB: 07-OCT-1978</div>
+            <div class="career-timeline">Career: 2000 - 2014</div>
+            <div class="stats">
+                <span class="stat-badge">92 Tests</span>
+                <span class="stat-badge">200 ODIs</span>
+                <span class="stat-badge">13 T20Is</span>
+            </div>
+            <div class="achievements">
+                <span class="achievement-badge">🏆 World Cup</span>
+                <span class="achievement-badge">👑 Mentor</span>
+                <span class="achievement-badge">⭐ Legend</span>
+                <span class="achievement-badge">🎖️ Hall</span>
+            </div>
+            <div class="star-rating">
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+            </div>
+            <div class="quote">I want to contribute to Indian cricket in every possible way.</div>
+            <div class="career-highlight">🎯 Spearhead of Indian Bowling</div>
+            <div class="career-highlight">🎯 2011 World Cup Winner</div>
+            <mark>BOWLER</mark>
+            <u>Shrirampur, Maharashtra</u>
+            <div class="state-badge">Maharashtra</div>
+        </div>
+    </span>
+
+    <span>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnxL-_qfvSZV6-7j08FrZDwdvU5_86Vm6MvMsJMf2J4Q&s=10"
+             alt="Yuvraj Singh">
+        <div class="info">
+            <b>YUVRAJ SINGH</b>
+            <div class="nickname">~ The Turbanator ~</div>
+            <div class="dob">DOB: 12-DEC-1981</div>
+            <div class="stats">
+                <span class="stat-badge">40 Tests</span>
+                <span class="stat-badge">304 ODIs</span>
+                <span class="stat-badge">58 T20Is</span>
+            </div>
+            <mark>ALL-ROUNDER</mark>
+            <u>Chandigarh</u>
+        </div>
+    </span>
+
+    <span>
+        <img src="https://cf-img-a-in.tosshub.com/sites/visualstory/wp/2024/01/Kapil-Dev-1.jpeg?size=*:900"
+             alt="Kapil Dev">
+        <div class="info">
+            <b>KAPIL DEV</b>
+            <div class="nickname">~ The Haryana Hurricane ~</div>
+            <div class="dob">DOB: 06-JAN-1959</div>
+            <div class="stats">
+                <span class="stat-badge">131 Tests</span>
+                <span class="stat-badge">225 ODIs</span>
+                <span class="stat-badge">World Cup Win</span>
+            </div>
+            <mark>ALL-ROUNDER</mark>
+            <u>Chandigarh</u>
+        </div>
+    </span>
+
+    <span>
+        <img src="https://thefangarage.com/upload/media/Screenshot-20200713071220-620x393.png"
+             alt="Sunil Gavaskar">
+        <div class="info">
+            <b>SUNIL GAVASKAR</b>
+            <div class="nickname">~ The Little Master ~</div>
+            <div class="dob">DOB: 10-JUL-1949</div>
+            <div class="stats">
+                <span class="stat-badge">125 Tests</span>
+                <span class="stat-badge">108 ODIs</span>
+                <span class="stat-badge">Autobiography</span>
+            </div>
+            <mark>BATSMAN</mark>
+            <u>Mumbai, Maharashtra</u>
+        </div>
+    </span>
+
+    <span>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGMWUyc57pPabYnC0tn1xUxNc_XQndG4o7KI8d7xjYa_21jBOoEo8YTldc&s=10"
+             alt="Mohammad Azharuddin">
+        <div class="info">
+            <b>MOHAMMAD AZHARUDDIN</b>            <div class="nickname">~ The Elegant One ~</div>            <div class="dob">DOB: 08-FEB-1963</div>
+            <div class="stats">
+                <span class="stat-badge">102 Tests</span>
+                <span class="stat-badge">334 ODIs</span>
+                <span class="stat-badge">Politician</span>
+            </div>
+            <mark>BATSMAN</mark>
+            <u>Hyderabad, Telangana</u>
+        </div>
+    </span>
+
+    <span>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuPJg8WDkbDuVmCdkiD-_JyIcYmwRVePivndALj1cGKA&s=10"
+             alt="Hardik Pandya">
+        <div class="info">
+            <b>HARDIK PANDYA</b>            <div class="nickname">~ The All-Rounder ~</div>            <div class="dob">DOB: 11-OCT-1993</div>
+            <div class="stats">
+                <span class="stat-badge">31 Tests</span>
+                <span class="stat-badge">111 ODIs</span>
+                <span class="stat-badge">84 T20Is</span>
+            </div>
+            <mark>ALL-ROUNDER</mark>
+            <u>Vadodara, Gujarat</u>
+        </div>
+    </span>
+
+    <span>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZSK6m3uOxPsYKBZ72ISQ7jjkIlOLDTuxCW7NMa8UwVg&s=10"
+             alt="Rahul Dravid">
+        <div class="info">
+            <b>RAHUL DRAVID</b>
+            <div class="nickname">~ The Wall ~</div>
+            <div class="dob">DOB: 11-JAN-1973</div>
+            <div class="stats">
+                <span class="stat-badge">164 Tests</span>
+                <span class="stat-badge">318 ODIs</span>
+                <span class="stat-badge">Director NCA</span>
+            </div>
+            <mark>BATSMAN</mark>
+            <u>Bengaluru, Karnataka</u>
+        </div>
+    </span>
+
+    <span>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSo3glPbQArizOmHyS8hPIEWx4cp0dZLrnXbQ7vb0iUQ&s=10"
+             alt="Sourav Ganguly">
+        <div class="info">
+            <b>SOURAV GANGULY</b>
+            <div class="nickname">~ The Bengal Tiger ~</div>
+            <div class="dob">DOB: 08-JUL-1972</div>
+            <div class="stats">
+                <span class="stat-badge">113 Tests</span>
+                <span class="stat-badge">311 ODIs</span>
+                <span class="stat-badge">BCCI President</span>
+            </div>
+            <mark>BATSMAN</mark>
+            <u>Kolkata, West Bengal</u>
+        </div>
+    </span>
+
+    <span>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1SQhiLb55jgq6HKxdwj19CGpicD8T-L2CLDivJA4SwA&s=10"
+             alt="Anil Kumble">
+        <div class="info">
+            <b>ANIL KUMBLE</b>
+            <div class="nickname">~ The Spin Doctor ~</div>
+            <div class="dob">DOB: 17-OCT-1970</div>
+            <div class="stats">
+                <span class="stat-badge">132 Tests</span>
+                <span class="stat-badge">271 ODIs</span>
+                <span class="stat-badge">Hat-trick Master</span>
+            </div>
+            <mark>BOWLER</mark>
+            <u>Bengaluru, Karnataka</u>
+        </div>
+    </span>
+
+    <span>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKqXV1MwaclY5rnbgUDFrxWx9irfGMTxNOJYRI_-kBuw&s=10"
+             alt="Harbhajan Singh">
+        <div class="info">
+            <b>HARBHAJAN SINGH</b>
+            <div class="nickname">~ Bhajji ~</div>
+            <div class="dob">DOB: 03-JUL-1980</div>
+            <div class="stats">
+                <span class="stat-badge">103 Tests</span>
+                <span class="stat-badge">236 ODIs</span>
+                <span class="stat-badge">32 T20Is</span>
+            </div>
+            <mark>BOWLER</mark>
+            <u>Jalandhar, Punjab</u>
+        </div>
+    </span>
+
+    <span>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS7PhflnUu0bHn5iWqeL7wp5F9yWJXHvOey3GmUO3lbA&s=10"
+             alt="R Ashwin">
+        <div class="info">
+            <b>R ASHWIN</b>
+            <div class="nickname">~ The Mystery Spinner ~</div>
+            <div class="dob">DOB: 17-SEP-1986</div>
+            <div class="stats">
+                <span class="stat-badge">96 Tests</span>
+                <span class="stat-badge">116 ODIs</span>
+                <span class="stat-badge">73 T20Is</span>
+            </div>
+            <mark>ALL-ROUNDER</mark>
+            <u>Chennai, Tamil Nadu</u>
+        </div>
+    </span>
+
+    <span>
+        <img src="https://media.crictracker.com/media/featureimage/2019/11/Suresh-Raina-2.jpg"
+             alt="Suresh Raina">
+        <div class="info">
+            <b>SURESH RAINA</b>
+            <div class="nickname">~ Mr. IPL ~</div>
+            <div class="dob">DOB: 27-NOV-1986</div>
+            <div class="stats">
+                <span class="stat-badge">23 Tests</span>
+                <span class="stat-badge">226 ODIs</span>
+                <span class="stat-badge">78 T20Is</span>
+            </div>
+            <mark>BATSMAN</mark>
+            <u>Ghaziabad, Uttar Pradesh</u>
+        </div>
+    </span>
+
+    <span>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxGwa0DCCUyVCwFPnGDbqxEKnNm1_ml0jBpFp26ySNng&s=10"
+             alt="V V S Laxman">
+        <div class="info">
+            <b>V V S LAXMAN</b>
+            <div class="nickname">~ The Statesman ~</div>
+            <div class="dob">DOB: 01-NOV-1974</div>
+            <div class="stats">
+                <span class="stat-badge">134 Tests</span>
+                <span class="stat-badge">86 ODIs</span>
+                <span class="stat-badge">Comebacks Legend</span>
+            </div>
+            <mark>BATSMAN</mark>
+            <u>Hyderabad, Telangana</u>
+        </div>
+    </span>
+
+    <span>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFwO27bh3WH2tf7bb9UbsJep_5vhKFhLt6bxv_Kmn3xg&s=10"
+             alt="Virender Sehwag">
+        <div class="info">
+            <b>VIRENDER SEHWAG</b>
+            <div class="nickname">~ The Nawab ~</div>
+            <div class="dob">DOB: 20-OCT-1978</div>
+            <div class="stats">
+                <span class="stat-badge">104 Tests</span>
+                <span class="stat-badge">251 ODIs</span>
+                <span class="stat-badge">15 T20Is</span>
+            </div>
+            <mark>BATSMAN</mark>
+            <u>Delhi</u>
+        </div>
+    </span>
+
+    <span>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfMqyFxU7NA55KC4H63ltbOeHQ9GBYEfRh4uyisGSKSw&s=10"
+             alt="Gautam Gambhir">
+        <div class="info">
+            <b>GAUTAM GAMBHIR</b>
+            <div class="nickname">~ The Wall of Delhi ~</div>
+            <div class="dob">DOB: 14-OCT-1981</div>
+            <div class="stats">
+                <span class="stat-badge">37 Tests</span>
+                <span class="stat-badge">147 ODIs</span>
+                <span class="stat-badge">37 T20Is</span>
+            </div>
+            <mark>BATSMAN</mark>
+            <u>Delhi</u>
+        </div>
+    </span>
+
+    <span>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSg2Gi4O4If1EavkoadD5N6ocpcs3BNYU_B5A4UEBETg&s=10"
+             alt="Irfan Pathan">
+        <div class="info">
+            <b>IRFAN PATHAN</b>
+            <div class="nickname">~ The Bermuda Triangle ~</div>
+            <div class="dob">DOB: 27-OCT-1984</div>
+            <div class="stats">
+                <span class="stat-badge">29 Tests</span>
+                <span class="stat-badge">120 ODIs</span>
+                <span class="stat-badge">32 T20Is</span>
+            </div>
+            <mark>ALL-ROUNDER</mark>
+            <u>Vadodara, Gujarat</u>
+        </div>
+    </span>
+
+    <span>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_6b8CSjj4s-OROc45l6862KrTyqHGMQ7-uzOEwpmudg&s=10"
+             alt="Shikhar Dhawan">
+        <div class="info">
+            <b>SHIKHAR DHAWAN</b>
+            <div class="nickname">~ Gabbar ~</div>
+            <div class="dob">DOB: 05-DEC-1985</div>
+            <div class="stats">
+                <span class="stat-badge">34 Tests</span>
+                <span class="stat-badge">144 ODIs</span>
+                <span class="stat-badge">68 T20Is</span>
+            </div>
+            <mark>BATSMAN</mark>
+            <u>Delhi</u>
+        </div>
+    </span>
+
+    </div>
+</div>
+
+<div class="footer">
+    <h3>CELEBRATING INDIAN CRICKET EXCELLENCE</h3>
+    <p>These legends have shaped the glorious history of Indian cricket 🏏</p>
+</div>
+
+</body>
+</html>
