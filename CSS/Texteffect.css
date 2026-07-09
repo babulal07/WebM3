@@ -1,0 +1,27 @@
+section{
+    height: 300px;
+    width: 400px;
+    /* By Name */
+    background-color: antiquewhite;
+
+    /* BY Hexadecimal */
+    background-color: #5ea2a2;
+
+    /* By RGB */
+    background-color: rgb(97, 207, 207);
+
+    /* By RGBA */
+    background-color: rgba(32, 177, 203, 0.753);
+}
+
+section p{
+    text-align: center;
+    text-align: left;
+    text-align: justify;
+
+    text-decoration: underline;
+    text-decoration: overline;
+    text-decoration: line-through;
+    text-decoration: none;
+
+}
