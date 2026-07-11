@@ -1,0 +1,38 @@
+body {
+    margin: 0;
+    height: 1000px;
+    font-family: Arial, sans-serif;
+}
+
+.box {
+    width: 150px;
+    height: 150px;
+}
+
+.card1 {
+    background-color: red;
+    position: relative;
+    top: 40px;
+    left: 40px;
+}
+
+.card2 {
+    background-color: blue;
+    position: absolute;
+    top: 100px;
+    right: 80px;
+}
+
+.card3 {
+    background-color: green;
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+}
+
+.card4 {
+    background-color: purple;
+    position: sticky;
+    top: 20px;
+    margin-left: 250px;
+}
