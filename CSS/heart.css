@@ -8,22 +8,22 @@
     height: 200px;
     width: 200px;
     position: absolute;
-    background-color:#4e0517;
+    background-color:#ef0b0b;
 }
 
 .first{
-    background-color: #4e0517;
+    background-color: #ef0b0b;
     z-index: 1;
 }
 
 .second{
-    background-color: #4e0517;
+    background-color: #ef0b0b;
     left: 100px;
     border-radius: 50%;
 }
 
 .third{
-    background-color: #4e0517;
+    background-color: #ef0b0b;
     top: -100px;
     border-radius: 50%;
 }
