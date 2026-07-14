@@ -1,7 +1,91 @@
+
+.parent {
+    height: 100vh;
+    width: 100%;
+    background-color: pink;
+}
+
+.parent .card {
+    height: 300px;
+    width: 400px;
+    background-color: white;
+    position: relative;
+    border: solid;
+}
+
+.parent .card:first-child {
+    top: 100px;
+    left: 20px;
+}
+
+.card:first-child img {
+    border: solid;
+    position: absolute;
+    top: 70px;
+    right: 70px;
+    height: 150px;
+}
+
+.parent .card:nth-child(2) {
+    left: 460px;
+    top: -205px;
+}
+
+.card:nth-child(2) img {
+    border: solid;
+    position: absolute;
+    top: 70px;
+    right: 70px;
+    height: 150px;
+}
+
+.parent .card:last-child {
+    top: -510px;
+    left: 900px;
+}
+
+.card:last-child img {
+    border: solid;
+    position: absolute;
+    top: 70px;
+    right: 70px;
+    height: 150px;
+}
+
+/* Same card style for the two direct div elements in position.html */
+.parent > div {
+    height: 300px;
+    width: 400px;
+    background-color: white;
+    position: relative;
+    border: solid;
+}
+
+.parent > div:first-of-type {
+    left: 20px;
+    top: -500px;
+}
+
+.parent > div:last-of-type {
+    left: 460px;
+    top: -805px;
+}
+
+.parent > div img {
+    border: solid;
+    position: absolute;
+    top: 70px;
+    right: 70px;
+    height: 150px;
+}
+
+
+
+/* Example: absolute positioning */
+/*
 body {
     margin: 0;
-    height: 1000px;
-    font-family: Arial, sans-serif;
+    height: 1500px;
 }
 
 .box {
@@ -11,28 +95,50 @@ body {
 
 .card1 {
     background-color: red;
-    position: relative;
-    top: 40px;
-    left: 40px;
+    position: absolute;
+    left: 150px;
 }
+*/
 
+/* Example: relative positioning */
+/*
 .card2 {
     background-color: blue;
-    position: absolute;
+    position: relative;
     top: 100px;
+    left: 40px;
     right: 80px;
 }
+*/
 
+/* Example: fixed positioning */
+/*
 .card3 {
     background-color: green;
     position: fixed;
     bottom: 40px;
     right: 40px;
 }
+*/
 
+/* Example: sticky positioning */
+/*
 .card4 {
     background-color: purple;
     position: sticky;
     top: 20px;
-    margin-left: 250px;
+    left: 50px;
 }
+*/
+
+/* Example: absolute child inside a positioned parent */
+/*
+.innercard {
+    height: 50px;
+    width: 50px;
+    background-color: rgb(189, 189, 206);
+    position: absolute;
+    top: 50px;
+    right: 50px;
+}
+*/
